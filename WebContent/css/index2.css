@@ -1,0 +1,137 @@
+/* 引入字体 */
+@font-face {
+	font-family:fzfysjt;
+    src: url("fzfysjt.ttf") format('truetype');
+} 
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+.pubBox1200{
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+#table {
+	margin-top:-30px;
+}
+.clear{
+	clear: both;
+}
+.btn1{
+	
+}
+.leftButton{
+	width: 110px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	margin-right: 40px;
+	color: white;
+	border: 1px solid #003783;
+	border-radius: 3px;
+	background: -webkit-linear-gradient(left,#00428A,#003783);
+	/*background: -webkit-linear-gradient(left,#94BDD7,#003783);*/
+}
+.rightButton{
+	float: right;
+	width: 60px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	margin-left: 40px;
+	color: white;
+	border: 1px solid #003783;
+	border-radius: 3px;
+	background: -webkit-linear-gradient(left,#00428A,#003783);
+}
+.header {
+    width: 100%;
+    height: 88px;
+    float:left;
+    position: relative;
+}
+.header .bg{
+    position: absolute;
+    width: 1200px;
+    /* width:100%; */
+    height: 100%;
+    left:calc((100% - 1200px)/2);
+    /* left:0; */
+    top:0;
+    background:url("../img/pic04.png") no-repeat right center;
+}
+.header .logo_msg {
+    position: relative;
+    width: 1200px;
+    /* width: 100%; */
+    height: 100%;
+    margin:auto;
+    background:url("../img/logo.png") no-repeat left center;
+}
+.header .title_font{
+	font-family:fzfysjt;
+	color: #005E9B;
+	font-size: 35px;
+	margin-left:197px;
+	line-height: 88px;
+}
+
+
+/*閹稿鎸�*/
+.header .topBtnWrap{
+    float: right;
+    height: 100%;
+    padding-top: calc((88px - 30px)/2);
+    box-sizing: border-box;
+    display:none;
+}
+.header .click_btn{
+    height:28px;
+    /* position: absolute;
+    top:calc((100% - 28px)/2); */
+    text-align: right;
+    line-height:28px;
+    cursor: pointer;
+    padding:0 8px;
+    box-sizing: border-box;
+}
+.header .logBtn{
+    color:#3289da;
+    float:left
+}
+.header .homeBtn{
+    color:#3289da;
+    float:right;
+}
+.header .click_btn span{
+    display: inline-block;
+    width:12px;
+    height:12px;
+    float:left;
+    margin-top:8px;
+    margin-right: 10px;
+}
+.header .logBtn span{
+    background:url("image/sy/icon.png") -4px -4px;
+}
+.header .homeBtn span{
+    background:url("image/sy/icon.png") -4px -25px;
+}
+.header .line{
+    display: inline-block;
+    width:5px;
+    height:10px;
+    float:left;
+    line-height: 26px;
+    /* position: absolute;
+    right:86px;
+    top:calc((100% - 10px)/2); */
+    color:#999;
+    /* background:url("image/sy/icon.png") -7px -65px; */
+}
+#userName:-webkit-any-link{
+	color:#3289da;
+}

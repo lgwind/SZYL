@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简历邮件eml格式提取系统</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/sea.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/sea-css.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cookie.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="header">
+            <div class="bg"></div>
+            <div class="logo_msg">
+            	<span class="title_font">简历邮件eml格式提取系统</span> 
+                <!--<div class="topBtnWrap" id="topArea">
+                    <div id="userInfo" style='display:inline;'>
+                        <c:if test="${Portal_user==null }">
+                            <div class="logBtn click_btn" id="login">
+                            <span class="logImg"></span>用户登录
+                            </div>
+                        </c:if>
+                        <c:if test="${Portal_user!=null }">
+                            <div class="logBtn click_btn">
+                            <a href="${ctx}/j_spring_security_logout" id="userName" userId="${Portal_user.userID}"><span class="logImg"></span>${Portal_user.userLoginName}</a>
+                             <input type="hidden" value="${Portal_user.userIsSuperAdmin}" id="isAdmin">
+                             <c:forEach var="org" items="${Portal_user.organziation}">
+                                <input type="hidden" value="${org.orgName}" id="org">
+                             </c:forEach>
+                            </div>
+                        </c:if>
+                     </div>
+                    <div class="line">/</div>
+                    <div class="homeBtn click_btn"><span class="homeImg"></span>设为首页</div>
+                </div>-->
+            </div>
+        </div>
+		<!--内容-->
+		<div class="pubBox1200">
+			<form action="" class="myform">
+				<span class="btn btn-primary fileinput-button leftButton">
+				<span>选择文件</span>
+				<input id="file" type="file" name="file" multiple accept=".eml">
+				<span class="badge" id="shownum"></span>
+				</span>
+				<input type="button" class="btn btn-success leftButton" value="上传解析" id="btn">
+			</form>
+			<input class="btn btn-info leftButton ttttt" type="button" id="extract" onclick="exportExcel()" value="导出" />
+			<input class="btn btn-danger leftButton" type="button" id="delete" onclick="deleteAll()" value="清空表格" />
+<!-- 			<input class="rightButton" type="button" id="Tab" value="表格" /> -->
+<!-- 			<input class="rightButton" type="button" id="pic" value="图文" /> -->
+			<div class="clear"></div>
+			<!--模块-->
+			<div id="table"></div>
+		</div>
+		<!--尾部-->
+		<div class="footer">
+			
+		</div>
+	<script type="text/javascript">
+		function btnClick() {
+			$("#file").change(function() {
+				var FileNum = $('#file').get(0).files.length;
+				if(FileNum==0){
+					$("#shownum").text("");					
+				}else{
+					$("#shownum").text(FileNum);
+				}
+			})
+			$("#btn").click(
+							function() {
+								var formData = new FormData();
+								var uploadFile = $('#file').get(0).files;
+								var username = getCookie("username");
+								for (var i = 0; i < uploadFile.length; i++) {
+									formData.append("file", uploadFile[i]);
+								}
+								$
+										.ajax({
+											url : '/SZYL/file/import?username='
+													+ username,
+											type : 'POST',
+											data : formData,
+											async : false,
+											cache : false,
+											contentType : false,
+											processData : false,
+											success : function() {
+												alert("导入成功");
+												// 			        	location.reload();
+												$
+														.ajax({
+															type : "get",
+															url : "/SZYL/resume/getAllByUsername?username="
+																	+ getCookie("username"),
+															dataType : "json",
+															success : function(
+																	json) {
+																$("#data_info")
+																		.bootstrapTable(
+																				'load',
+																				json);//主要是要这种写法
+															}
+														});
+											},
+											error : function() {
+												alert("导入失败");
+											}
+										});
+							})
+		}
+		btnClick();
+	</script>
+</body>
+</html>

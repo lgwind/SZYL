@@ -1,0 +1,9 @@
+#table table tr th, .button_del{
+	background: #003783;
+	color: #ffffff;
+	font-weight: normal;
+}
+#table table tr:hover td,#table table tr.selected td{
+	color: #1b659f;
+	background: #eaf6fd;
+}
